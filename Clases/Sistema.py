@@ -10,6 +10,7 @@ class Sistema(object):
     def __init__(self):
 
         self.listaDeVuelos = []
+        self.listaDeAviones = []
         self.listaDePasajeros = []
         self.listaDeTripulacion = []
 
