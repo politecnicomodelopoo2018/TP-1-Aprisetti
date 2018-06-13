@@ -10,4 +10,4 @@ class Avion:
 
         self.codigoUnico = archivoAvion["codigoUnico"]
         self.cantidadDePasajerosMaxima = archivoAvion["cantidadDePasajerosMaxima"]
-        self.cantidadDeTripulacionNecesaria = archivoAvion["cantidadDeTripulaciónNecesaria"]
+        self.cantidadDeTripulacionNecesaria = archivoAvion["cantidadDeTripulacionNecesaria"]

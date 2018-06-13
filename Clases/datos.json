@@ -3,32 +3,32 @@
     { 
       "codigoUnico" : "A1",
       "cantidadDePasajerosMaxima": 200,
-      "cantidadDeTripulaciónNecesaria": 5
+      "cantidadDeTripulacionNecesaria": 5
     },
     { 
       "codigoUnico" : "A2",
       "cantidadDePasajerosMaxima": 150,
-      "cantidadDeTripulaciónNecesaria": 4
+      "cantidadDeTripulacionNecesaria": 4
     },
     { 
       "codigoUnico" : "A3",
       "cantidadDePasajerosMaxima": 20,
-      "cantidadDeTripulaciónNecesaria": 2
+      "cantidadDeTripulacionNecesaria": 2
     },
     { 
       "codigoUnico" : "A4",
       "cantidadDePasajerosMaxima": 140,
-      "cantidadDeTripulaciónNecesaria": 3
+      "cantidadDeTripulacionNecesaria": 3
     },
     { 
       "codigoUnico" : "A5",
       "cantidadDePasajerosMaxima": 100,
-      "cantidadDeTripulaciónNecesaria": 3
+      "cantidadDeTripulacionNecesaria": 3
     },
     { 
       "codigoUnico" : "A6",
       "cantidadDePasajerosMaxima": 30,
-      "cantidadDeTripulaciónNecesaria": 2
+      "cantidadDeTripulacionNecesaria": 2
     }
   ],
   "Personas": [
@@ -210,7 +210,7 @@
       "fecha": "2018-09-30",
       "hora": "12:30",
       "origen": "Buenos Aires",
-      "destino": "Córdoba",
+      "destino": "Cordoba",
       "tripulacion": ["3","5","8"],
       "pasajeros": ["10","11","12"]
     }

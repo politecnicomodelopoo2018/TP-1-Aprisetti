@@ -1,4 +1,4 @@
-import datetime
+from datetime import *
 
 class Persona(object):
 
@@ -21,7 +21,7 @@ class Persona(object):
 
 
 
-class Pasajeros(Persona):
+class Pasajero(Persona):
 
     def __init__(self, nombre = None, apellido = None, fechaNacimiento = None, dni = None, vip = None,
                  solicitudesEspeciales = None):
@@ -56,7 +56,7 @@ class Tripulacion(Persona):
 
         self.avionesHabilitados = []
 
-    def deserealizar(self, archivoPersona, listaDeAviones):
+    def deserealizar(self, archivoPersona):
         self.nombre = archivoPersona["nombre"]
         self.apellido = archivoPersona["apellido"]
         self.fechaNacimiento = datetime.strptime(archivoPersona["fechaNacimiento"], "%Y-%m-%d").date()
@@ -68,7 +68,7 @@ class Tripulacion(Persona):
 
 
 
-class Pilotos(Tripulacion):
+class Piloto(Tripulacion):
 
     pass
 
@@ -83,7 +83,7 @@ class Servicio(Tripulacion):
 
         self.idiomas = []
 
-    def deserealizar(self, archivoPersona, listaDeAviones):
+    def deserealizar(self, archivoPersona):
         self.nombre = archivoPersona["nombre"]
         self.apellido = archivoPersona["apellido"]
         self.fechaNacimiento = datetime.strptime(archivoPersona["fechaNacimiento"], "%Y-%m-%d").date()

@@ -1,4 +1,4 @@
-import datetime
+from datetime import *
 
 class Vuelo:
 
@@ -15,7 +15,7 @@ class Vuelo:
 
     def deserializar(self, archivoVuelo):
 
-        self.avion = archivoVuelo["Avion"]
+        self.avion = archivoVuelo["avion"]
         self.fecha = datetime.strptime(archivoVuelo["fecha"], "%Y-%m-%d").date()
         self.hora = archivoVuelo["hora"]
         self.origen = archivoVuelo["origen"]
