@@ -2,8 +2,8 @@ class Sistema(object):
 
     __instance = None
 
-    def __new__(cls):
-        if Sistema.__instance is None
+    def __new__(cls, *args, **kwargs):
+        if Sistema.__instance is None:
             Sistema.__instance = object.__new__(cls)
         return Sistema.__instance
 
@@ -13,5 +13,3 @@ class Sistema(object):
         self.listaDeAviones = []
         self.listaDePasajeros = []
         self.listaDeTripulacion = []
-
-    def Nomina(self, vueloIN):
