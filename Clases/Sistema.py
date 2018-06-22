@@ -13,3 +13,9 @@ class Sistema(object):
         self.listaDeAviones = []
         self.listaDePasajeros = []
         self.listaDeTripulacion = []
+
+    def mostrarPasajeroEnVuelo(self, vuelo):
+        return vuelo.mostrarListaPasajeros()
+
+    def mostrarPasajeroMasJovenEnVuelo(self, vuelo):
+        return vuelo.pasajeroMasJoven()

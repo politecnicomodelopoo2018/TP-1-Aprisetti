@@ -1,9 +1,9 @@
 import json
 import datetime
 from Aviones import Avion
+from Personas import *
 from Vuelo import Vuelo
 from Sistema import Sistema
-from Personas import *
 
 sistema = Sistema()
 listaAviones = []
@@ -32,10 +32,17 @@ for item in archivoDiccionario["Personas"]:
 
 for item in archivoDiccionario["Vuelos"]:
     vueloAux = Vuelo()
-    vueloAux.deserializar(item)
+    vueloAux.deserializar(item, listaPasajeros, listaPilotos, listaServicios)
     listaVuelos.append(vueloAux)
 
 sistema.listaDeAviones = listaAviones
 sistema.listaDePasajeros = listaPasajeros
 sistema.listaDeVuelos = listaVuelos
 sistema.listaDeTripulacion = listaPilotos + listaServicios
+
+for item in listaVuelos:
+    print(sistema.mostrarPasajeroEnVuelo(item))
+    print("El pasajero mas joven es: ")
+    print(sistema.mostrarPasajeroMasJovenEnVuelo(item).nombre + " "
+          + sistema.mostrarPasajeroMasJovenEnVuelo(item).apellido)
+    print("\n")
