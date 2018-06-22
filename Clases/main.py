@@ -68,6 +68,10 @@ for item in listaVuelos:
             print("Nombre: " + cosa.nombre + " Apellido: " + cosa.apellido + "\n")
         print("\n")
 
+    idiomas = sistema.mostrarListaIdiomas(item)
+    for idiom in idiomas:
+        print("Idioma del vuelo: " + idiom + "\n")
+
 
 print("\n" + "Tripulacion que vuela mas de una vez: ")
 for item in sistema.tripulacionQueVuelaMasDeUnaVez():

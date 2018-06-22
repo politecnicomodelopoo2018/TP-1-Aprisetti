@@ -36,11 +36,11 @@ class Sistema(object):
 
         listaAux = []
 
-        for item in self.listaDeVuelos:
-            for item2 in self.listaDeVuelos:
-                if item != item2 and item.fecha == item2.fecha:
-                    for tripulante in item.tripulacion:
-                        if tripulante in item2.tripulacion:
+        for primerVuelo in self.listaDeVuelos:
+            for segundoVuelo in self.listaDeVuelos:
+                if primerVuelo != segundoVuelo and primerVuelo.fecha == segundoVuelo.fecha:
+                    for tripulante in primerVuelo.tripulacion:
+                        if tripulante in segundoVuelo.tripulacion:
                             if tripulante not in listaAux:
                                 listaAux.append(tripulante)
 
@@ -48,3 +48,6 @@ class Sistema(object):
 
     def mostrarPersonaEspecial(self, vuelo):
         return vuelo.personasEspeciales()
+
+    def mostrarListaIdiomas(self, vuelo):
+        return vuelo.idiomasHablados()

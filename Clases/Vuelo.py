@@ -75,8 +75,9 @@ class Vuelo:
 
     def idiomasHablados(self):
         listaAux = []
-        for item in  self.tripulacion:
+        for item in self.tripulacion:
             if item.__class__.__name__ == "Servicio":
-                for idiomas in item.idiomas:
-                    listaAux.append(idiomas)
+                for idiom in item.idiomas:
+                    if idiom not in listaAux:
+                        listaAux.append(idiom)
         return listaAux
