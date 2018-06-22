@@ -1,5 +1,6 @@
 from datetime import *
 from Personas import Persona
+from Aviones import Avion
 
 class Vuelo:
 
@@ -14,9 +15,12 @@ class Vuelo:
         self.tripulacion = []
         self.pasajeros = []
 
-    def deserializar(self, archivoVuelo, listaPersonas, listaPilotos, listaServicios):
+    def deserializar(self, archivoVuelo, listaPersonas, listaPilotos, listaServicios, listaAviones):
 
-        self.avion = archivoVuelo["avion"]
+        for item in listaAviones:
+            if archivoVuelo["avion"] == item.codigoUnico:
+                self.avion = item
+
         self.fecha = datetime.strptime(archivoVuelo["fecha"], "%Y-%m-%d").date()
         self.hora = archivoVuelo["hora"]
         self.origen = archivoVuelo["origen"]
@@ -51,3 +55,28 @@ class Vuelo:
         for item in self.pasajeros:
             if item.fechaNacimiento == max(listaEdades):
                 return item
+
+    def minimaTripulacion(self):
+        if len(self.tripulacion) < self.avion.cantidadDeTripulacionNecesaria:
+            return self
+
+    def tripulacionNoAutorizada(self):
+        for item in self.tripulacion:
+            for autorizado in item.avionesHabilitados:
+                if self.avion.codigoUnico not in item.avionesHabilitados:
+                    return self
+
+    def personasEspeciales(self):
+        listaAux = []
+        for item in self.pasajeros:
+            if item.vip == 1 or item.solicitudesEspeciales != None:
+                listaAux.append(item)
+        return listaAux
+
+    def idiomasHablados(self):
+        listaAux = []
+        for item in  self.tripulacion:
+            if item.__class__.__name__ == "Servicio":
+                for idiomas in item.idiomas:
+                    listaAux.append(idiomas)
+        return listaAux

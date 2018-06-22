@@ -32,7 +32,7 @@ for item in archivoDiccionario["Personas"]:
 
 for item in archivoDiccionario["Vuelos"]:
     vueloAux = Vuelo()
-    vueloAux.deserializar(item, listaPasajeros, listaPilotos, listaServicios)
+    vueloAux.deserializar(item, listaPasajeros, listaPilotos, listaServicios, listaAviones)
     listaVuelos.append(vueloAux)
 
 sistema.listaDeAviones = listaAviones
@@ -41,8 +41,34 @@ sistema.listaDeVuelos = listaVuelos
 sistema.listaDeTripulacion = listaPilotos + listaServicios
 
 for item in listaVuelos:
+
     print(sistema.mostrarPasajeroEnVuelo(item))
     print("El pasajero mas joven es: ")
     print(sistema.mostrarPasajeroMasJovenEnVuelo(item).nombre + " "
           + sistema.mostrarPasajeroMasJovenEnVuelo(item).apellido)
     print("\n")
+
+    tripulacion = sistema.mostrarminimaTripulacion(item)
+    print("Vuelo no cumple cantidad de tripulacion: ")
+    if tripulacion != None:
+        print(tripulacion.avion.codigoUnico)
+    print("\n")
+
+    tripulacionNoAutorizada = sistema.mostrarTripulacionNoAutorizada(item)
+    print("Vuelo no cumple con tripulacion autorizada: ")
+    if tripulacionNoAutorizada != None:
+        print(tripulacionNoAutorizada.avion.codigoUnico)
+    print("\n")
+
+    print("Personas vip o con necesidades especiales en el vuelo: ")
+
+    cosasVip = sistema.mostrarPersonaEspecial(item)
+    if cosasVip != None:
+        for cosa in cosasVip:
+            print("Nombre: " + cosa.nombre + " Apellido: " + cosa.apellido + "\n")
+        print("\n")
+
+
+print("\n" + "Tripulacion que vuela mas de una vez: ")
+for item in sistema.tripulacionQueVuelaMasDeUnaVez():
+    print("Nombre: " + item.nombre + " Apellido: " + item.apellido + "\n")
