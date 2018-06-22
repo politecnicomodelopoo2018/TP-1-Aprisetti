@@ -56,13 +56,15 @@ class Tripulacion(Persona):
 
         self.avionesHabilitados = []
 
-    def deserealizar(self, archivoPersona):
+    def deserealizar(self, archivoPersona, listaAviones):
         self.nombre = archivoPersona["nombre"]
         self.apellido = archivoPersona["apellido"]
         self.fechaNacimiento = datetime.strptime(archivoPersona["fechaNacimiento"], "%Y-%m-%d").date()
         self.dni = archivoPersona["dni"]
         for item in archivoPersona["avionesHabilitados"]:
-            self.avionesHabilitados.append(item)
+            for avion in listaAviones:
+                if avion.codigoUnico == item:
+                    self.avionesHabilitados.append(avion)
 
 
 

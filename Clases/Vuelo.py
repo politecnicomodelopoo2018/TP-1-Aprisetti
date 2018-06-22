@@ -63,7 +63,7 @@ class Vuelo:
     def tripulacionNoAutorizada(self):
         for item in self.tripulacion:
             for autorizado in item.avionesHabilitados:
-                if self.avion.codigoUnico not in item.avionesHabilitados:
+                if self.avion.codigoUnico == autorizado.codigoUnico:
                     return self
 
     def personasEspeciales(self):

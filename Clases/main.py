@@ -22,7 +22,10 @@ for item in archivoDiccionario["Aviones"]:
 
 for item in archivoDiccionario["Personas"]:
     personaAux = eval(item["tipo"])()
-    personaAux.deserealizar(item)
+    if eval(item["tipo"])() == ("Servicio" or "Piloto"):
+        personaAux.deserealizar(item, listaAviones)
+    else:
+        personaAux.deserealizar(item)
     if personaAux.__class__.__name__  == "Piloto":
         listaPilotos.append(personaAux)
     elif personaAux.__class__.__name__ == "Servicio":
