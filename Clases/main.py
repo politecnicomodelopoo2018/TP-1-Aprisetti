@@ -22,16 +22,20 @@ for item in archivoDiccionario["Aviones"]:
 
 for item in archivoDiccionario["Personas"]:
     personaAux = eval(item["tipo"])()
-    if eval(item["tipo"])() == ("Servicio" or "Piloto"):
+
+    if personaAux.__class__.__name__ == "Servicio" or personaAux.__class__.__name__ == "Piloto":
         personaAux.deserealizar(item, listaAviones)
-    else:
+    elif personaAux.__class__.__name__ == "Pasajero":
         personaAux.deserealizar(item)
+
+
     if personaAux.__class__.__name__  == "Piloto":
         listaPilotos.append(personaAux)
     elif personaAux.__class__.__name__ == "Servicio":
         listaServicios.append(personaAux)
     elif personaAux.__class__.__name__ == "Pasajero":
         listaPasajeros.append(personaAux)
+
 
 for item in archivoDiccionario["Vuelos"]:
     vueloAux = Vuelo()
@@ -44,23 +48,23 @@ sistema.listaDeVuelos = listaVuelos
 sistema.listaDeTripulacion = listaPilotos + listaServicios
 
 for item in listaVuelos:
-
+    print("\n"*3 + "El avion de este vuelo es el: " + item.avion.codigoUnico + "\n")
+    print("Tripulacion del vuelo: " + item.avion.codigoUnico + "\n")
     print(sistema.mostrarPasajeroEnVuelo(item))
     print("El pasajero mas joven es: ")
-    print(sistema.mostrarPasajeroMasJovenEnVuelo(item).nombre + " "
+    print("     " + sistema.mostrarPasajeroMasJovenEnVuelo(item).nombre + " "
           + sistema.mostrarPasajeroMasJovenEnVuelo(item).apellido)
     print("\n")
 
     tripulacion = sistema.mostrarminimaTripulacion(item)
-    print("Vuelo no cumple cantidad de tripulacion: ")
+
     if tripulacion != None:
-        print(tripulacion.avion.codigoUnico)
-    print("\n")
+        print("Vuelo " + tripulacion.avion.codigoUnico +  " cumple cantidad de tripulacion")
 
     tripulacionNoAutorizada = sistema.mostrarTripulacionNoAutorizada(item)
-    print("Vuelo no cumple con tripulacion autorizada: ")
+
     if tripulacionNoAutorizada != None:
-        print(tripulacionNoAutorizada.avion.codigoUnico)
+        print("Vuelo " + tripulacionNoAutorizada.avion.codigoUnico + " no cumple con tripulacion autorizada")
     print("\n")
 
     print("Personas vip o con necesidades especiales en el vuelo: ")
@@ -68,7 +72,8 @@ for item in listaVuelos:
     cosasVip = sistema.mostrarPersonaEspecial(item)
     if cosasVip != None:
         for cosa in cosasVip:
-            print("Nombre: " + cosa.nombre + " Apellido: " + cosa.apellido + "\n")
+            print("     Nombre: " + cosa.nombre + " " + cosa.apellido)
+            print("     DNI: " + cosa.dni)
         print("\n")
 
     idiomas = sistema.mostrarListaIdiomas(item)
@@ -78,4 +83,4 @@ for item in listaVuelos:
 
 print("\n" + "Tripulacion que vuela mas de una vez: ")
 for item in sistema.tripulacionQueVuelaMasDeUnaVez():
-    print("Nombre: " + item.nombre + " Apellido: " + item.apellido + "\n")
+    print("     Nombre: " + item.nombre + " " + item.apellido + "\n")

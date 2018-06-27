@@ -74,8 +74,15 @@ class Piloto(Tripulacion):
 
     pass
 
-
-
+    def deserealizar(self, archivoPersona, listaAviones):
+        self.nombre = archivoPersona["nombre"]
+        self.apellido = archivoPersona["apellido"]
+        self.fechaNacimiento = datetime.strptime(archivoPersona["fechaNacimiento"], "%Y-%m-%d").date()
+        self.dni = archivoPersona["dni"]
+        for item in archivoPersona["avionesHabilitados"]:
+            for avion in listaAviones:
+                if avion.codigoUnico == item:
+                    self.avionesHabilitados.append(avion)
 
 class Servicio(Tripulacion):
 
@@ -85,10 +92,14 @@ class Servicio(Tripulacion):
 
         self.idiomas = []
 
-    def deserealizar(self, archivoPersona):
+    def deserealizar(self, archivoPersona, listaAviones):
         self.nombre = archivoPersona["nombre"]
         self.apellido = archivoPersona["apellido"]
         self.fechaNacimiento = datetime.strptime(archivoPersona["fechaNacimiento"], "%Y-%m-%d").date()
         self.dni = archivoPersona["dni"]
         for item in archivoPersona["idiomas"]:
             self.idiomas.append(item)
+        for item in archivoPersona["avionesHabilitados"]:
+            for avion in listaAviones:
+                if avion.codigoUnico == item:
+                    self.avionesHabilitados.append(avion)

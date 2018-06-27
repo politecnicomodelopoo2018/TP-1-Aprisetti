@@ -31,7 +31,6 @@ class Vuelo:
                 if persona.dni == item:
                     self.pasajeros.append(persona)
 
-
         for item in archivoVuelo["tripulacion"]:
             for pilotos in listaPilotos:
                 if pilotos.dni == item:
@@ -44,8 +43,8 @@ class Vuelo:
     def mostrarListaPasajeros(self):
         lista = ""
         for item in self.pasajeros:
-            lista += ("Nombre de pasajero: " + item.nombre)
-            lista += (" Apellido: " + item.apellido + "\n")
+            lista += ("     Nombre de pasajero: " + item.nombre + item.apellido + "\n")
+            lista += ("     DNI:" + item.dni + "\n"*2)
         return lista
 
     def pasajeroMasJoven(self):
@@ -62,8 +61,7 @@ class Vuelo:
 
     def tripulacionNoAutorizada(self):
         for item in self.tripulacion:
-            for autorizado in item.avionesHabilitados:
-                if self.avion.codigoUnico == autorizado.codigoUnico:
+            if self.avion not in item.avionesHabilitados:
                     return self
 
     def personasEspeciales(self):
