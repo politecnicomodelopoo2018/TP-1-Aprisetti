@@ -32,17 +32,17 @@ class Sistema(object):
         except AttributeError:
             pass
 
-    def tripulacionQueVuelaMasDeUnaVez(self):
+    def tripulacionQueVuelaMasDeUnaVez(self, vuelo):
 
         listaAux = []
 
-        for primerVuelo in self.listaDeVuelos:
-            for segundoVuelo in self.listaDeVuelos:
-                if primerVuelo != segundoVuelo and primerVuelo.fecha == segundoVuelo.fecha:
-                    for tripulante in primerVuelo.tripulacion:
-                        if tripulante in segundoVuelo.tripulacion:
-                            if tripulante not in listaAux:
-                                listaAux.append(tripulante)
+       # for primerVuelo in self.listaDeVuelos:
+        for comparar in self.listaDeVuelos:
+            if vuelo != comparar and vuelo.fecha == comparar.fecha:
+                for tripulante in vuelo.tripulacion:
+                    if tripulante in comparar.tripulacion:
+                         if tripulante not in listaAux:
+                            listaAux.append(tripulante)
 
         return listaAux
 

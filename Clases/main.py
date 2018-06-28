@@ -4,6 +4,15 @@ from Aviones import Avion
 from Personas import *
 from Vuelo import Vuelo
 from Sistema import Sistema
+from Funciones import *
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/vuelos")
+def hello():
+    return render_template("index.html")
+
 
 sistema = Sistema()
 listaAviones = []
@@ -47,7 +56,11 @@ sistema.listaDePasajeros = listaPasajeros
 sistema.listaDeVuelos = listaVuelos
 sistema.listaDeTripulacion = listaPilotos + listaServicios
 
+pagesite = 0
+
 for item in listaVuelos:
+    pagesite += 1
+    '''
     print("\n"*3 + "El avion de este vuelo es el: " + item.avion.codigoUnico + "\n")
     print("Tripulacion del vuelo: " + item.avion.codigoUnico + "\n")
     print(sistema.mostrarPasajeroEnVuelo(item))
@@ -81,6 +94,36 @@ for item in listaVuelos:
         print("Idioma del vuelo: " + idiom + "\n")
 
 
+
 print("\n" + "Tripulacion que vuela mas de una vez: ")
 for item in sistema.tripulacionQueVuelaMasDeUnaVez():
     print("     Nombre: " + item.nombre + " " + item.apellido + "\n")
+'''
+for item in sistema.listaDeVuelos:
+    print(inicio(item))
+    print(ejercicio1(item))
+    print(ejercicio2(item))
+    print(ejercicio3(item))
+    print(ejercicio4(item))
+    print(ejercicio5(item))
+    print(ejercicio6(item))
+    print(ejercicio7(item))
+
+
+@app.route("/vuelos/<vuelo>")
+def vuelos(vuelo):
+    for item in sistema.listaDeVuelos:
+        return render_template("Vuelos.html", name = item.avion.codigoUnico,
+                               ej1 = ejercicio1(item),
+                               ej2 = ejercicio2(item),
+                               ej3 = ejercicio3(item),
+                               ej4 = ejercicio4(item),
+                               ej5 = ejercicio5(item),
+                               ej6 = ejercicio6(item),
+                               ej7 = ejercicio7(item))
+@app.route("/ejercicio2")
+def Ejercicio2():
+    return "Este es el ejercicio2"
+
+if __name__ == "__main__":
+    app.run(debug=True)

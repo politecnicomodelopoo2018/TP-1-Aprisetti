@@ -56,7 +56,7 @@ class Vuelo:
                 return item
 
     def minimaTripulacion(self):
-        if len(self.tripulacion) < self.avion.cantidadDeTripulacionNecesaria:
+        if len(self.tripulacion) >= self.avion.cantidadDeTripulacionNecesaria:
             return self
 
     def tripulacionNoAutorizada(self):
