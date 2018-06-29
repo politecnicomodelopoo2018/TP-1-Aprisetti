@@ -115,7 +115,7 @@ def vuelos():
 def vuelo(vuelo):
         return render_template("Vuelos.html", name=vuelo,
                                listaDeVuelos = sistema.listaDeVuelos,
-                               sistema = Sistema())
+                               sistema = sistema)
 
 if __name__ == "__main__":
     app.run(debug=True)
