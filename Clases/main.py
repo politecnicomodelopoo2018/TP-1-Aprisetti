@@ -9,9 +9,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route("/vuelos")
-def hello():
-    return render_template("index.html")
+
 
 
 sistema = Sistema()
@@ -109,21 +107,15 @@ for item in sistema.listaDeVuelos:
     print(ejercicio6(item))
     print(ejercicio7(item))
 
+@app.route("/")
+def vuelos():
+    return render_template("index.html", listaDeVuelos = sistema.listaDeVuelos)
 
-@app.route("/vuelos/<vuelo>")
-def vuelos(vuelo):
-    for item in sistema.listaDeVuelos:
-        return render_template("Vuelos.html", name = item.avion.codigoUnico,
-                               ej1 = ejercicio1(item),
-                               ej2 = ejercicio2(item),
-                               ej3 = ejercicio3(item),
-                               ej4 = ejercicio4(item),
-                               ej5 = ejercicio5(item),
-                               ej6 = ejercicio6(item),
-                               ej7 = ejercicio7(item))
-@app.route("/ejercicio2")
-def Ejercicio2():
-    return "Este es el ejercicio2"
+@app.route("/<vuelo>")
+def vuelo(vuelo):
+        return render_template("Vuelos.html", name=vuelo,
+                               listaDeVuelos = sistema.listaDeVuelos,
+                               sistema = Sistema())
 
 if __name__ == "__main__":
     app.run(debug=True)

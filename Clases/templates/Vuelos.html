@@ -5,6 +5,27 @@
     <title>Este es el vuelo {{ name }}</title>
 </head>
 <body>
-<h1>Este es el vuelo {{ name }}</h1>
+<table width="40%" style="text-align:center;">
+    <tr>
+        <th>Nombre<th>
+        <th>DNI</th>
+    </tr>
+        {%  for item in listaDeVuelos %}
+        {%      if item.avion.codigoUnico == name %}
+        {%          for persona in item.tripulacion %}
+        <tr>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellido}}</td>
+            <td>{{persona.dni}}</td>
+
+        </tr>
+
+
+        {%          endfor %}
+        </table>
+        El pasajero mas joven es: {{ item.pasajeroMasJoven().nombre }} {{ item.pasajeroMasJoven().apellido }}
+        {%      endif %}
+        {%  endfor %}
+
 </body>
 </html>
