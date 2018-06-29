@@ -51,10 +51,8 @@ sistema.listaDePasajeros = listaPasajeros
 sistema.listaDeVuelos = listaVuelos
 sistema.listaDeTripulacion = listaPilotos + listaServicios
 
-pagesite = 0
 
 for item in listaVuelos:
-    pagesite += 1
     '''
     print("\n"*3 + "El avion de este vuelo es el: " + item.avion.codigoUnico + "\n")
     print("Tripulacion del vuelo: " + item.avion.codigoUnico + "\n")
@@ -115,12 +113,3 @@ def vuelo(vuelo):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-while 1:
-    cont = 0;
-    if cont == 0:
-        print(Fore.RED)
-        cont += 1
-    if cont == 1:
-        print(Fore.BLUE)

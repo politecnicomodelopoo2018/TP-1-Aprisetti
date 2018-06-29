@@ -5,32 +5,36 @@
     <title>Este es el vuelo {{ name }}</title>
 </head>
 <body>
-<table width="40%" style="text-align:center;">
-    Ejercicio 1
-    <br>
+<table width="40%" border="1" style="text-align:center;">
+    Ejercicio 1 pasajeros en el vuelo:
     <tr>
-        <th>Nombre<th>
+        <th>Nombre</th>
         <th>DNI</th>
     </tr>
         {%  for item in listaDeVuelos %}
         {%      if item.avion.codigoUnico == name %}
         {%          for persona in item.tripulacion %}
         <tr>
-            <td>{{persona.nombre}}</td>
-            <td>{{persona.apellido}}</td>
+            <td>{{persona.nombre}} {{persona.apellido}}</td>
             <td>{{persona.dni}}</td>
 
         </tr>
-
         <br>
-
         {%          endfor %}
         </table>
-        Ejercicio 2: El pasajero mas joven es: {{ item.pasajeroMasJoven().nombre }} {{ item.pasajeroMasJoven().apellido }}
+
+        <br>
+        <br>
+        <br>
+
+        Ejercicio 2 El pasajero mas joven es: {{ item.pasajeroMasJoven().nombre }} {{ item.pasajeroMasJoven().apellido }}
         {%      endif %}
         {%  endfor %}
 
         <br>
+        <br>
+        <br>
+
         {%  for item in listaDeVuelos %}
         {%      if item.avion.codigoUnico == name %}
         {%          if sistema.mostrarminimaTripulacion(item) != None %}
@@ -44,8 +48,9 @@
 
 
         <br>
-
         <br>
+        <br>
+
         Ejercicio 4:
         {%  for item in listaDeVuelos %}
         {%      if item.avion.codigoUnico == name %}
@@ -58,9 +63,12 @@
         {% endfor %}
 
         <br>
+        <br>
+        <br>
+
         Ejercicio 5 Tripulacion que vuela mas de una vez:
         <br>
-        <table width="40%" style="text-align:center;">
+        <table width="40%" border="1" style="text-align:center;">
             <tr>
                 <th>Nombre</th>
             </tr>
@@ -68,31 +76,33 @@
         {%      if item.avion.codigoUnico == name %}
         {%          for procedimiento in sistema.tripulacionQueVuelaMasDeUnaVez(item) %}
             <tr>
-                <td>{{procedimiento.nombre}}</td>
-                <td>{{procedimiento.apellido}}</td>
+                <td>{{procedimiento.nombre}} {{procedimiento.apellido}}</td>
             </tr>
+            <br>
         {% endfor %}
         {% endif %}
         {% endfor %}
         </table>
 
         <br>
+        <br>
+        <br>
 
         {%  for item in listaDeVuelos %}
         {%      if item.avion.codigoUnico == name %}
         {%           if sistema.mostrarPersonaEspecial(item) != None %}
                         <br>
-                        Ejercicio 6:
-                        Personas vip o con necesidades especiales en el vuelo
-        <table width="40%" style="text-align:center;">
+                        Ejercicio 6
+                        Personas vip o con necesidades especiales en el vuelo:
+        <table width="40%" border="1" style="text-align:center;">
             <tr>
-                <th>Nombre<th>
+                <th>Nombre</th>
             </tr>
         {%              for itemVip in sistema.mostrarPersonaEspecial(item) %}
             <tr>
-            <td>{{itemVip.nombre}}</td>
-            <td>{{itemVip.apellido}}</td>
+            <td>{{itemVip.nombre}} {{itemVip.apellido}}</td>
             </tr>
+            <br>
         {%  endfor %}
         </table>
         {% endif %}
@@ -100,11 +110,12 @@
         {% endfor %}
 
         <br>
-
         <br>
+        <br>
+
         Ejercicio 7 Idiomas del vuelo:
         <br>
-        <table width="40%" style="text-align:center;">
+        <table width="40%" border="1" style="text-align:center;">
             <tr>
                 <th>Idioma</th>
             </tr>
@@ -114,6 +125,7 @@
             <tr>
                 <td>{{procedimiento}}</td>
             </tr>
+            <br>
         {% endfor %}
         {% endif %}
         {% endfor %}
