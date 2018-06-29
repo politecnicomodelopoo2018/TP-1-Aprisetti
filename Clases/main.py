@@ -9,9 +9,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
-
-
 sistema = Sistema()
 listaAviones = []
 listaPilotos = []
@@ -75,11 +72,10 @@ for item in listaVuelos:
     tripulacionNoAutorizada = sistema.mostrarTripulacionNoAutorizada(item)
 
     if tripulacionNoAutorizada != None:
-        print("Vuelo " + tripulacionNoAutorizada.avion.codigoUnico + " no cumple con tripulacion autorizada")
+        print ("Vuelo " + tripulacionNoAutorizada.avion.codigoUnico + " no cumple con tripulacion autorizada")
     print("\n")
 
     print("Personas vip o con necesidades especiales en el vuelo: ")
-
     cosasVip = sistema.mostrarPersonaEspecial(item)
     if cosasVip != None:
         for cosa in cosasVip:
@@ -119,3 +115,12 @@ def vuelo(vuelo):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+while 1:
+    cont = 0;
+    if cont == 0:
+        print(Fore.RED)
+        cont += 1
+    if cont == 1:
+        print(Fore.BLUE)
